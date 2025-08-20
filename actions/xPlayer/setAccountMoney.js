@@ -1,8 +1,7 @@
 const fetchEsxPlayer = require('../../utils/fetchEsxPlayer');
 
 module.exports = (data) => {
-    const {source, account, amount} = data;
+    const { source, account, amount } = data;
 
-    return fetchEsxPlayer(source)
-        .then((xPlayer) => xPlayer.setAccountMoney(account, amount));
-}
+    return fetchEsxPlayer(source).then((xPlayer) => xPlayer.setAccountMoney(account, amount));
+};

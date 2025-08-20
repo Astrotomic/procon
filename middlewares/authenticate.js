@@ -1,4 +1,4 @@
-const config = require("../config.json");
+const config = require('../config.json');
 
 module.exports = (req, res, next) => {
     const authHeader = req.headers['authorization'];
@@ -9,9 +9,9 @@ module.exports = (req, res, next) => {
         if (token === config.token) {
             next();
         } else {
-            res.status(401).json({error: 'Unauthorized'});
+            res.status(401).json({ error: 'Unauthorized' });
         }
     } else {
-        res.status(401).json({error: 'Unauthorized'});
+        res.status(401).json({ error: 'Unauthorized' });
     }
 };

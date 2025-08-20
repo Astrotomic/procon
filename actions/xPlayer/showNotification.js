@@ -1,9 +1,8 @@
-const fetchEsxPlayer = require("../../utils/fetchEsxPlayer");
+const fetchEsxPlayer = require('../../utils/fetchEsxPlayer');
 module.exports = (data) => {
-    const {source, message} = data;
+    const { source, message } = data;
 
-    fetchEsxPlayer(source)
-        .then((xPlayer) => xPlayer.showNotification(message));
+    fetchEsxPlayer(source).then((xPlayer) => xPlayer.showNotification(message));
 
     return true;
-}
+};

@@ -1,5 +1,5 @@
 module.exports = (data) => {
-    const {name} = data;
+    const { name } = data;
     const society = name.startsWith('society_') ? name : `society_${name}`;
 
     return new Promise((resolve) => {
@@ -7,5 +7,4 @@ module.exports = (data) => {
             resolve(account.money);
         });
     });
-}
-
+};

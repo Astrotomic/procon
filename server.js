@@ -11,6 +11,15 @@ const port = config.port;
 app.use(bodyParser.json());
 app.use(authenticate);
 
+app.get('/list', (req, res) => {
+    try {
+        const list = generateDotNotatedKeys(actions);
+        res.json({ actions: list });
+    } catch (error) {
+        res.status(500).json({ error: error?.toString() || 'Internal Server Error' });
+    }
+});
+
 app.post('/run/:action', (req, res) => {
     const actionName = req.params.action;
 
@@ -19,19 +28,19 @@ app.post('/run/:action', (req, res) => {
 
         if (action) {
             new Promise((resolve, reject) => {
-                resolve(action(req.body))
+                resolve(action(req.body));
             })
                 .then((result) => {
                     result = result ?? true;
-                    console.log(actionName+'('+JSON.stringify(req.body)+')'+': '+JSON.stringify(result ?? null));
-                    res.json({result});
+                    console.log(actionName + '(' + JSON.stringify(req.body) + ')' + ': ' + JSON.stringify(result ?? null));
+                    res.json({ result });
                 })
-                .catch((error) => res.status(500).json({error: error?.toString() || 'Internal Server Error'}));
+                .catch((error) => res.status(500).json({ error: error?.toString() || 'Internal Server Error' }));
             return;
         }
     }
 
-    res.status(404).json({error: 'Invalid action'});
+    res.status(404).json({ error: 'Invalid action' });
 });
 
 app.listen(port, () => {

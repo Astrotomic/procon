@@ -4,4 +4,4 @@ module.exports = (source) => {
             resolve(xPlayer);
         });
     });
-}
+};

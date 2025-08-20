@@ -5,7 +5,9 @@ const actions = {};
 
 const pattern = '**/*.js';
 const resourcePath = GetResourcePath(GetCurrentResourceName());
-const actionFiles = glob.sync(pattern, { cwd: path.join(resourcePath, 'actions') });
+const actionFiles = glob.sync(pattern, {
+    cwd: path.join(resourcePath, 'actions'),
+});
 
 actionFiles.forEach((file) => {
     const actionPath = path.join(resourcePath, 'actions', file);
