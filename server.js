@@ -27,7 +27,7 @@ app.post('/run/:action', (req, res) => {
     if (actionName) {
         const action = actionName.split('.').reduce((obj, key) => obj[key], actions);
 
-        if (action) {
+        if (action && typeof action === 'function') {
             new Promise((resolve, reject) => {
                 resolve(action(req.body));
             })
