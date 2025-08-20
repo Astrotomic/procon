@@ -4,17 +4,18 @@ const authenticate = require('./middlewares/authenticate.js');
 const config = require('./config.json');
 const actions = require('./utils/actions');
 const generateDotNotatedKeys = require('./utils/generateDotNotatedKeys');
+const generateRulesMap = require('./utils/generateRulesMap');
 
 const app = express();
 const port = config.port;
 
 app.use(bodyParser.json());
-app.use(authenticate);
+//app.use(authenticate);
 
 app.get('/list', (req, res) => {
     try {
-        const list = generateDotNotatedKeys(actions);
-        res.json({ actions: list });
+        const rules = generateRulesMap(actions);
+        res.json(rules);
     } catch (error) {
         res.status(500).json({ error: error?.toString() || 'Internal Server Error' });
     }
@@ -35,7 +36,15 @@ app.post('/run/:action', (req, res) => {
                     console.log(actionName + '(' + JSON.stringify(req.body) + ')' + ': ' + JSON.stringify(result ?? null));
                     res.json({ result });
                 })
-                .catch((error) => res.status(500).json({ error: error?.toString() || 'Internal Server Error' }));
+                .catch((error) => {
+                    if (error && (error.name === 'ValidationError' || error.status === 422)) {
+                        return res.status(422).json({
+                            message: 'The given data was invalid.',
+                            errors: error.errors || {},
+                        });
+                    }
+                    return res.status(500).json({ error: error?.toString() || 'Internal Server Error' });
+                });
             return;
         }
     }

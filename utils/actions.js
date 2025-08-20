@@ -4,7 +4,8 @@ const path = require('path');
 const actions = {};
 
 const pattern = '**/*.js';
-const resourcePath = GetResourcePath(GetCurrentResourceName());
+//const resourcePath = GetResourcePath(GetCurrentResourceName());
+const resourcePath = path.resolve(__dirname, '..');
 const actionFiles = glob.sync(pattern, {
     cwd: path.join(resourcePath, 'actions'),
 });
