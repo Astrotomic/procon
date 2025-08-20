@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'Tom Witkowski <dev.gummibeer@gmail.com>'
+author 'Tom Herrmann <dev.gummibeer@gmail.com>'
 description 'FiveM RCON for pros'
 version '0.1.0'
 
@@ -11,4 +11,4 @@ server_only 'yes'
 server_script 'server.lua'
 server_script 'server.js'
 
-shared_script '@es_extended/imports.lua'
+--shared_script '@es_extended/imports.lua'
