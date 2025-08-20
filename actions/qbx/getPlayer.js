@@ -1,4 +1,4 @@
-const fetchqbxplayer = require('../../utils/fetchqpxplayer');
+const fetchqbxplayer = require('../../utils/fetchQpxPlayer');
 
 module.exports = (data) => {
     const { source } = data;

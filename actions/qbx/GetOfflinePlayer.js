@@ -1,4 +1,4 @@
-const fetchqbxplayer = require('../../utils/fetchqbxplayer');
+const fetchqbxplayer = require('../../utils/fetchQpxPlayer');
 
 module.exports = (data) => {
     const { citizenid } = data;
