@@ -10,7 +10,7 @@ const app = express();
 const port = config.port;
 
 app.use(bodyParser.json());
-//app.use(authenticate);
+app.use(authenticate);
 
 app.get('/list', (req, res) => {
     try {
