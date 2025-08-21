@@ -1,7 +1,7 @@
-const fetchqbxplayer = require('../../utils/fetchQpxPlayer');
+const fetchQbxPlayer = require('../../utils/fetchQbxPlayer');
 
 module.exports = (data) => {
     const { inv,owner} = data;
 
-    return fetchqbxplayer(source).then((qbxplayer) => exports.ox_inventory.GetInventory(inv, owner));
+    return fetchQbxPlayer(source).then((qbxplayer) => exports.ox_inventory.GetInventory(inv, owner));
 };

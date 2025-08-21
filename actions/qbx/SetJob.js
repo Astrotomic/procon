@@ -1,7 +1,7 @@
-const fetchqbxplayer = require('../../utils/fetchQpxPlayer');
+const fetchQbxPlayer = require('../../utils/fetchQbxPlayer');
 
 module.exports = (data) => {
     const { identifier,jobName,grade } = data;
 
-    return fetchqbxplayer(source).then((qbxplayer) => exports.qbx_core.SetJob(identifier, jobName, grade));
+    return fetchQbxPlayer(source).then((qbxplayer) => exports.qbx_core.SetJob(identifier, jobName, grade));
 };

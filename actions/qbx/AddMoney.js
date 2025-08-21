@@ -1,7 +1,7 @@
-const fetchqbxplayer = require('../../utils/fetchQpxPlayer');
+const fetchQbxPlayer = require('../../utils/fetchQbxPlayer');
 
 module.exports = (data) => {
     const { identifier,moneyType,amount,reason } = data;
 
-    return fetchqbxplayer(source).then((qbxplayer) => exports.qbx_core.AddMoney(identifier, moneyType, amount, reason));
+    return fetchQbxPlayer(source).then((qbxplayer) => exports.qbx_core.AddMoney(identifier, moneyType, amount, reason));
 };
